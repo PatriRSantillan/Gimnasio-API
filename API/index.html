@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="UTF-8">
+    <base href="<?= BASE_URL ?>">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Musculatrix - Gimnasio</title>
+</head>
+
+<body>
+    <!-- main header -->
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="main">MUSCULATRIX</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <?php if (!isset($_SESSION['CLIENTE_ID'])) : ?>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="login">Login</a>
+                            </li>
+                        <?php elseif ($_SESSION['CLIENTE_ID']==1) : ?>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="admin">Admin</a>
+                            </li>
+                            <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="desloguear">Logout</a>
+                            </li>
+                        <?php else : ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="desloguear">Logout</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="rutinas">Rutinas</a>
+                                </li>
+                        <?php endif ?>
+                    </ul>
+                </div>
+            </div>
+            </nav>
+    </header>
+
+    <!-- inicio main container -->
+    <main class="container">
+        <form action="cargar" method="POST" class="my-5">
+            <div class="column">
+                <div class="col-5">
+                    <div class="form-group">
+                        <label>Tren: </label>
+                        <input required name="tren" type="text" class="form-control">
+                    </div>
+                </div>
+        
+                <div class="col-5">
+                    <div class="form-group">
+                        <label>Musculo: </label>
+                        <input required name="musculo" type="text" class="form-control">
+                    </div>
+                </div>
+        
+                <div class="col-5">
+                    <label>Ejercicio: </label>
+                    <input required name="ejercicio" type="text" class="form-control">
+                </div>
+        
+                
+                <div class="col-3">
+                    <div class="form-group">
+                        <label>Repeticiones: </label>
+                        <select required name="repeticiones" class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
+                    </div>
+                </div>
+        
+                <div class="col-3">
+                    <div class="form-group">
+                        <label>Series: </label>
+                        <select required name="series" class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                </div>
+                
+            </div>
+            <button type="submit" onsubmit="return false" class="btn btn-primary mt-2">Agregar rutina</button>
+        </form>
+    </main>
+    <!-- fin main container -->
+    
+    <!-- main footer -->
+    <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
+          <div class="align-items-center">
+            <span class="text-muted">Musculatrix</span>
+          </div>
+    </footer>
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    
+    </body>
+    </html>
